@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package>
+  <name>ev3infoumons_pds2017</name>
+  <version>0.0.0</version>
+  <description>The ev3infoumons_pds2017 package</description>
+
+  <maintainer email="pierre.hauweele@umons.ac.be">Pierre Hauweele</maintainer>
+
+  <license>MIT</license>
+
+  <!-- <url type="website"></url> -->
+
+  <author email="pierre.hauweele@umons.ac.be">Pierre Hauweele</author> -->
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <run_depend>ev3infoumons_controller</run_depend>
+  <run_depend>map_server</run_depend>
+  <run_depend>robot_pose_ekf</run_depend>
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+
+  </export>
+</package>

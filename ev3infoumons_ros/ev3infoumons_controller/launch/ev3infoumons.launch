@@ -1,0 +1,44 @@
+<launch>
+  <arg name="ev3_hostname" default="ev3dev"/>
+  <arg name="joy_config" default="ps4" />
+  <arg name="joy_dev" default="/dev/input/js0" />
+  <arg name="config_filepath"
+       default="$(find ev3infoumons_controller)/config/joy_$(arg joy_config).yaml" />
+
+  <!-- Load the urdf robot description for visualization in RViz -->
+  <param name="robot_description"
+         textfile="$(find ev3infoumons_description)/urdf/ev3infoumons.urdf"/>
+
+  <!-- Load the controllers *on the ev3* to publish joint states, odometry and
+       listen for differential drive velocity commands. -->
+  <group ns="$(arg ev3_hostname)">
+    <!-- Load joint controller configurations from YAML file to
+         parameter server -->
+    <rosparam command="load"
+              file="$(find ev3infoumons_controller)/config/ev3infoumons.yaml"/>
+    <!-- load the controllers -->
+    <node name="controller_spawner" pkg="controller_manager"
+          type="spawner" respawn="false" output="screen"
+          args="diffDrv OutPortState"/>
+  </group>
+
+  <node pkg="robot_state_publisher" type="robot_state_publisher"
+        name="rob_st_pub" >
+    <remap from="joint_states" to="$(arg ev3_hostname)/joint_states" />
+  </node>
+
+  <!-- Load a node publishing the joystick inputs for teleop to read -->
+  <node pkg="joy" type="joy_node" name="joy_node">
+    <param name="dev" value="$(arg joy_dev)" />
+    <param name="deadzone" value="0.1" />
+    <param name="autorepeat_rate" value="4" />
+    <param name="coalesce_interval" value="0.05" />
+  </node>
+
+  <!-- Load the teleop node that reads the joystick inputs and publish
+       velocity commands to the robot's differential drive cmd_vel topic. -->
+  <node pkg="teleop_twist_joy" name="teleop_twist_joy" type="teleop_node">
+    <remap from="cmd_vel" to="$(arg ev3_hostname)/diffDrv/cmd_vel"/>
+    <rosparam command="load" file="$(arg config_filepath)" />
+  </node>
+</launch>

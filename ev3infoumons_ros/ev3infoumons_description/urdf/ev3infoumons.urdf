@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<robot name="ev3infoumons">
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://ev3infoumons_description/meshes/base_pivoted.dae"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="base_laser">
+    <visual>
+      <geometry>
+        <!--cylinder length="0.0408" radius="0.03625"/>-->
+        <mesh filename="package://ev3infoumons_description/meshes/rplidar.dae"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="base_link_to_base_laser" type="fixed">
+    <parent link="base_link"/>
+    <child link="base_laser"/>
+    <origin xyz="0.02 0 0.095"/>
+  </joint>
+</robot>

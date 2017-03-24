@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package>
+  <name>ev3infoumons_description</name>
+  <version>0.0.1</version>
+  <description>
+    Description of the UMons Informatic Department's ev3 robot
+  </description>
+
+  <maintainer email="pierre.hauweele@umons.ac.be">Pierre Hauweele</maintainer>
+
+  <license>MIT</license>
+
+  <!-- <url type="website"></url> -->
+
+  <author email="pierre.hauweele@umons.ac.be">Pierre Hauweele</author> -->
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>urdf</build_depend>
+  <run_depend>urdf</run_depend>
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+
+  </export>
+</package>

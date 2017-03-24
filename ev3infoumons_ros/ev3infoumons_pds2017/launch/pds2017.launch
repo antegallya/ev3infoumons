@@ -1,0 +1,4 @@
+<launch>
+  <node name="map_server" pkg="map_server" type="map_server"
+    args="$(find ev3infoumons_pds2017)/config/map.yaml"/>
+</launch>
