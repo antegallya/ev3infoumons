@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot name="ev3infoumons">
-  <link name="base_link">
+  <link name="base_footprint">
     <visual>
       <geometry>
         <mesh filename="package://ev3infoumons_description/meshes/base_pivoted.dae"/>
@@ -15,8 +15,8 @@
       </geometry>
     </visual>
   </link>
-  <joint name="base_link_to_base_laser" type="fixed">
-    <parent link="base_link"/>
+  <joint name="base_footprint_to_base_laser" type="fixed">
+    <parent link="base_footprint"/>
     <child link="base_laser"/>
     <origin xyz="0.02 0 0.095"/>
   </joint>
