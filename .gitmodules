@@ -1,0 +1,3 @@
+[submodule "docker/cc-ws/ros-catkin-ws/src/h4r_ev3_ctrl"]
+	path = docker/cc-ws/ros-catkin-ws/src/h4r_ev3_ctrl
+	url = git@github.com:antegallya/h4r_ev3_ctrl.git
